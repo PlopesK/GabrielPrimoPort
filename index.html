@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 
     <link rel="preload" href="src/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="src/css/background.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
     <link data-default-icon="imgs/PixelKurusu.ico" sizes="192x192" rel="icon" href="imgs/PixelKurusu.ico"/>
     <link rel="shortcut icon" href="imgs/PixelKurusu.ico" sizes="192x192">
     <title> Gabriel Primo Portfólio </title>
@@ -28,12 +30,16 @@
 
     <!-- CONTEÚDO PRINCIPAL -->
     <main>
-        <div class="destaques">
-            <h3>Projetos em destaque</h3>
+        <div class="geometric-background" id="geometric-background"></div>
+        <div class="particles" id="particles"></div>
+        <div class="gradient-overlay"></div>
+
+        <div class="modal info">
+            <h3>Olá meu nome é Gabriel Primo!</h3>
         </div>
 
-        <div class="info">
-            <h3>Olá meu nome é Gabriel Primo!</h3>
+        <div class="modal destaques">
+            <h3>Projetos em destaque</h3>
         </div>
     </main>
 
@@ -45,6 +51,8 @@
         <p>&copy; 2025 Todos os direitos reservados - Gabriel Primo.</p>
         <p>RU: 4744511</p>
     </footer>
+
+    <script src="./src/particles.js"></script>
 </body>
 
 </html>
