@@ -224,6 +224,12 @@ main > * {
     align-items: center;
     width: 50%;
     height: 6vh;
+    transform: scale(1);
+    transition: all 0.2s ease-in-out;
+}
+
+#projeList a:hover {
+    transform: scale(1.1);
 }
 
 /* ////////////// Footer ////////////// */
