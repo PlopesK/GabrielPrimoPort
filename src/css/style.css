@@ -1,11 +1,11 @@
 /* ////////////// Padrões do site ////////////// */
 :root {
-    --cor-primaria: #3498db;
+    --cor-primaria: #1a1a2e;
 }
 
 html {
     scroll-behavior: smooth;
-    scrollbar-color: var(--main-color) transparent;
+    scrollbar-color: var(--cor-primaria) transparent;
     scrollbar-width: thin;
     overflow-x: hidden;
 }
@@ -104,25 +104,107 @@ header ul {
     border: none;
 }
 
-/* ////////////// Fundo padrão dos elementos ////////////// */
+/* ////////////// Conteúdo principal ////////////// */
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .modal {
     position: relative;
-    max-width: 80%;
-    background: repeating-linear-gradient(
-      0deg,
-      #0E0D0E 25%,
-      #0E0D0E 50%,
-      #171819 50%,
-      #171819 75%
-    );
+    max-width: 90%;
+    background: repeating-linear-gradient(0deg,
+            #0E0D0E 25%,
+            #0E0D0E 50%,
+            #171819 50%,
+            #171819 75%);
     background-size: 10px 10px;
     padding: 30px;
     border-radius: 10px;
     z-index: 8;
+    margin: 1vh 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .modal p {
-    text-shadow: 1px 1px var(--btn-color);
-    font-weight: 600;
+    text-shadow: 1px 1px var(--cor-primaria);
+    margin-bottom: 1vh;
+}
+
+/* ////// Info ////// */
+.info {
+    max-width: 70% !important;
+    background: none !important;
     margin-bottom: 2vh;
+}
+
+#primo {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#tecTitle {
+    margin-top: 3vh;
+}
+
+.tecnologias {
+    position: relative;
+    max-height: 20%;
+}
+
+.tecnologias ul,
+.projetos ul {
+    margin: 2vh 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.tecnologias img {
+    max-width: 40%;
+}
+
+/* ////// Destaques ////// */
+.destaques {
+    width: 95% !important;
+}
+
+.projetos {
+    width: 100%;
+    padding: 1vh;
+}
+
+.projeConteudo {
+    display: flex;
+    flex-direction: column;
+    padding: 2vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+}
+
+.projeConteudo img {
+    width: 50%;
+    border-radius: 10px;
+    margin-bottom: 1vh;
+}
+
+/* ////////////// Footer ////////////// */
+footer {
+    max-width: 100% !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+    margin-top: 2vh;
+}
+
+.github {
+    font-size: 10vh;
+    margin: 0.5vh 0
 }

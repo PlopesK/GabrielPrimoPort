@@ -9,7 +9,7 @@
     <link rel="preload" href="src/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="src/css/background.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
-    <link data-default-icon="imgs/PixelKurusu.ico" sizes="192x192" rel="icon" href="imgs/PixelKurusu.ico"/>
+    <link data-default-icon="imgs/PixelKurusu.ico" sizes="192x192" rel="icon" href="imgs/PixelKurusu.ico" />
     <link rel="shortcut icon" href="imgs/PixelKurusu.ico" sizes="192x192">
     <title> Gabriel Primo Portfólio </title>
 </head>
@@ -28,31 +28,59 @@
         </div>
     </header>
 
+    <!-- FUNDO ANIMADO -->
+    <div class="geometric-background" id="geometric-background"></div>
+    <div class="particles" id="particles"></div>
+    <div class="gradient-overlay"></div>
+
     <!-- CONTEÚDO PRINCIPAL -->
     <main>
-        <div class="geometric-background" id="geometric-background"></div>
-        <div class="particles" id="particles"></div>
-        <div class="gradient-overlay"></div>
-
         <div class="modal info">
-            <h3>Olá meu nome é Gabriel Primo!</h3>
+            <h2>👋 Olá! Seja bem-vindo(a) ao meu portfólio! 👋</h2>
+
+            <p>Meu nome é <a id="primo" href="https://github.com/PlopesK">Gabriel Primo</a>
+                , aqui você encontrará uma seleção dos meus projetos, ideias e experiências no universo do
+                desenvolvimento.</p>
+
+            <p>Meu foco é criar soluções funcionais, bem estruturadas e com atenção à experiência do
+                usuário, sempre buscando aprender, evoluir e transformar desafios em código! </p>
+
+            <p> Sinta-se à vontade para explorar, testar e conhecer um pouco mais do meu trabalho!</p>
+
+            <h2 id="tecTitle">💻 Principais Tecnologias 💻</h2>
+            <div class="tecnologias">
+                <ul id="iconList"> </ul>
+            </div>
         </div>
 
         <div class="modal destaques">
             <h3>Projetos em destaque</h3>
+
+            <div class="projetos">
+                <ul id="projeList">
+                    <li>
+                        <div class="projeConteudo">
+                            <img src="imgs\PixelKurusu.ico">
+                            <h3>Título</h3>
+                            <p>Pequena descrição</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </main>
 
     <!-- FOOTER -->
-    <footer>
+    <footer class="modal">
         <div class="github">
             <a href="https://github.com/PlopesK"><i class="fab fa-github"></i></a>
         </div>
-        <p>&copy; 2025 Todos os direitos reservados - Gabriel Primo.</p>
+        <p>&copy; 2025 - Gabriel Primo.</p>
         <p>RU: 4744511</p>
     </footer>
 
     <script src="./src/particles.js"></script>
+    <script src="./src/script.js"></script>
 </body>
 
 </html>
