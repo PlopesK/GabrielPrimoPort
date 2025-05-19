@@ -19,11 +19,11 @@
     <header>
         <div class="abas">
             <ul>
-                <li><a class="opcoes ativo">Início</a></li>
-                <li><a class="opcoes">Sobre mim</a></li>
-                <li><a class="opcoes">Formação</a></li>
-                <li><a class="opcoes">Portfólio</a></li>
-                <li><a class="opcoes">Contato</a></li>
+                <li><a class="opcoes ativo" onclick="controlMenus('inicio')">Início</a></li>
+                <li><a class="opcoes" onclick="controlMenus('sobre')">Sobre mim</a></li>
+                <li><a class="opcoes" onclick="controlMenus('formacao')">Formação</a></li>
+                <li><a class="opcoes" onclick="controlMenus('portfolio')">Portfólio</a></li>
+                <li><a class="opcoes" onclick="controlMenus('contato')">Contato</a></li>
             </ul>
         </div>
     </header>
@@ -35,32 +35,39 @@
 
     <!-- CONTEÚDO PRINCIPAL -->
     <main>
-        <div class="modal info">
-            <h2>👋 Olá! Seja bem-vindo(a) ao meu portfólio! 👋</h2>
+        <section id="inicio">
+            <div class="modal info">
+                <h2>👋 Olá! Seja bem-vindo(a) ao meu portfólio! 👋</h2>
 
-            <p>Meu nome é <a id="primo" href="https://github.com/PlopesK">Gabriel Primo</a>
-                , aqui você encontrará uma seleção dos meus projetos, ideias e experiências no universo do
-                desenvolvimento.</p>
+                <p>Meu nome é <a id="primo" href="https://github.com/PlopesK">Gabriel Primo</a>
+                    , aqui você encontrará uma seleção dos meus projetos, ideias e experiências no universo do
+                    desenvolvimento.</p>
 
-            <p>Meu foco é criar soluções funcionais, bem estruturadas e com atenção à experiência do
-                usuário, sempre buscando aprender, evoluir e transformar desafios em código! </p>
+                <p>Meu foco é criar soluções funcionais, bem estruturadas e com atenção à experiência do
+                    usuário, sempre buscando aprender, evoluir e transformar desafios em código! </p>
 
-            <p> Sinta-se à vontade para explorar, testar e conhecer um pouco mais do meu trabalho!</p>
+                <p> Sinta-se à vontade para explorar, testar e conhecer um pouco mais do meu trabalho!</p>
 
-            <h2 id="tecTitle">💻 Principais Tecnologias 💻</h2>
-            <div class="tecnologias">
-                <ul id="iconList"> </ul>
+                <h2 id="tecTitle">💻 Principais Tecnologias 💻</h2>
+                <div class="tecnologias">
+                    <ul id="iconList"> </ul>
+                </div>
             </div>
-        </div>
 
-        <div class="modal destaques">
-            <h3>🔎 Projetos em destaque 🔎</h3>
+            <div class="modal destaques">
+                <h3>🔎 Projetos em destaque 🔎</h3>
 
-            <div class="projetos">
-                <ul id="projeList">
-                </ul>
+                <div class="projetos">
+                    <ul id="projeList">
+                    </ul>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <section id="sobre" style="display: none;"> <h3>SOBRE MIM</h3> </section>
+        <section id="formacao" style="display: none;"> <h3>FORMAÇÃO</h3> </section>
+        <section id="portfolio" style="display: none;"> <h3>PORTFÓLIO</h3> </section>
+        <section id="contato" style="display: none;"> <h3>CONTATO</h3> </section>
     </main>
 
     <!-- FOOTER -->
