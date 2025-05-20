@@ -26,7 +26,7 @@
             }
         }
 
-        // Create particles
+        // Cria particulas
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
             
@@ -34,15 +34,15 @@
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 
-                // Random positions
+                // Posições aleatórias
                 const posX = Math.random() * 100;
                 const posY = Math.random() * 100;
                 
-                // Random animation properties
+                // Animação e proporções aleatórias
                 const delay = Math.random() * 8;
                 const duration = Math.random() * 4 + 4;
                 
-                // Apply styles
+                // Aplica os estilos
                 particle.style.left = `${posX}%`;
                 particle.style.top = `${posY}%`;
                 particle.style.animationDelay = `${delay}s`;
@@ -52,7 +52,7 @@
             }
         }
 
-        // Mouse movement interaction
+        // Interação com mouse
         function addMouseInteraction() {
             document.addEventListener('mousemove', (e) => {
                 const x = e.clientX / window.innerWidth;
@@ -70,7 +70,7 @@
             });
         }
 
-        // Initialize animation
+        // Começa a animação
         document.addEventListener('DOMContentLoaded', () => {
             createShapes();
             createParticles();

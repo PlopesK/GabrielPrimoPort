@@ -318,6 +318,8 @@ textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-family: inherit;
+    background-color: #0E0D0E;
+    color: white;
     resize: none;
 }
 
