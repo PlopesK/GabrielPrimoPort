@@ -63,3 +63,29 @@ const formacoes = [
     tipo: "complementar"
   },
 ];
+const portfolio = [
+  {
+    imagem: "./imgs/sonicr.png",
+    titulo: "Sonic R",
+    descricao: "Um jogo de Sonic para navegador feito com HTML, CSS e JS",
+    link: "https://plopesk.github.io/Sonic-R/"
+  },
+  {
+    imagem: "./imgs/pokedex.png",
+    titulo: "PokeDex",
+    descricao: "Um site que apresenta detalhes de Pokémons da Primeira Geração.",
+    link: "https://plopesk.github.io/Pokedex/"
+  },
+  {
+    imagem: "./imgs/anemo.png",
+    titulo: "Anemo System",
+    descricao: "Sistema de controle escolar feito para o TCC da ETEC.",
+    link: "https://anemosystem.github.io/anemo-system-website/"
+  },
+  {
+    imagem: "./imgs/programming.png",
+    titulo: "Estudos de Programação",
+    descricao: "Meus estudos de linguagem. Além de ter todos meus projetos acadêmicos",
+    link: "https://github.com/PlopesK/ProgrammingStudies"
+  }
+];

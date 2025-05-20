@@ -8,6 +8,28 @@ function escapeHTML(str) {
     .replace(/'/g, "&#039;");
 }
 
+//Função para controle de menus //
+function controlMenus(selectedMenu) {
+  const menus = document.querySelector("main");
+  const links = document.querySelectorAll(".opcoes");
+
+  // Remover a classe 'ativo' de todos os links
+  links.forEach(link => link.classList.remove("ativo"));
+  // Comparamos o valor do parâmetro passado com o do link
+  links.forEach(link => {
+    if (link.getAttribute("onclick") === `controlMenus('${selectedMenu}')`) {
+      link.classList.add("ativo");
+    }
+  });
+
+  // Alterna visibilidade dos menus
+  for (let i = 0; i < menus.children.length; i++) {
+    if (menus.children[i].tagName !== "IMG") {
+      menus.children[i].style.display = (menus.children[i].id === selectedMenu) ? "flex" : "none";
+    }
+  }
+}
+
 // Carrega de maneira dinâmica os projetos dentro do array "projetos" //
 function carregarProjetos(projetos) {
   return projetos.map(projeto => {
@@ -32,28 +54,6 @@ function carregarProjetos(projetos) {
 function gerarProjetos() {
   const ul = document.getElementById("projeList");
   ul.innerHTML = carregarProjetos(projetos); //Atualiza a lista de projetos presente no site
-}
-
-//Função para controle de menus //
-function controlMenus(selectedMenu) {
-  const menus = document.querySelector("main");
-  const links = document.querySelectorAll(".opcoes");
-
-  // Remover a classe 'ativo' de todos os links
-  links.forEach(link => link.classList.remove("ativo"));
-  // Comparamos o valor do parâmetro passado com o do link
-  links.forEach(link => {
-    if (link.getAttribute("onclick") === `controlMenus('${selectedMenu}')`) {
-      link.classList.add("ativo");
-    }
-  });
-
-  // Alterna visibilidade dos menus
-  for (let i = 0; i < menus.children.length; i++) {
-    if (menus.children[i].tagName !== "IMG") {
-      menus.children[i].style.display = (menus.children[i].id === selectedMenu) ? "flex" : "none";
-    }
-  }
 }
 
 // Menu "Sobre Mim" //
@@ -97,6 +97,7 @@ function carregarSobre() {
   sobre.innerHTML = sobreMim;
 }
 
+// Menu "Formação" //
 function carregarFormacoes(formacoes) {
   const academicos = formacoes.filter(f => f.tipo === "academico");
   const complementares = formacoes.filter(f => f.tipo === "complementar");
@@ -140,6 +141,43 @@ function carregarFormacoes(formacoes) {
   document.querySelector("#cursosComplementares").innerHTML = gerarHTML(complementares);
 }
 
+// Menu "Portfólio" //
+function carregarPortfolio(portfolio) {
+  const portMenu = document.getElementById("portfolio");
+  const introducao = `
+    <div class="modal forma">
+        <h3> PORTFÓLIO </h3>
+        <span class="modal port">
+          <ul id="portList">
+          </ul>
+        </span>
+    </div>
+  `;
+  portMenu.innerHTML = introducao
+
+  const gerarHTML = () => {
+    return portfolio.map(projeto => {
+      const titulo = escapeHTML(projeto.titulo);
+      const descricao = escapeHTML(projeto.descricao);
+      const imagem = escapeHTML(projeto.imagem);
+      const link = escapeHTML(projeto.link);
+
+      return `
+        <li>
+          <div class="projeConteudo">
+            <img src="${imagem}" alt="${titulo}" loading="lazy">
+            <h3>${titulo}</h3>
+            <p>${descricao}</p>
+            <a href="${link}" target="_blank" rel="noopener noreferrer">Ver repositório</a>
+          </div>
+        </li>
+      `;
+    }).join("");
+  }
+
+  document.querySelector("#portList").innerHTML = gerarHTML();
+}
+
 window.addEventListener("DOMContentLoaded", function () {
   //Quando a página carregar, gera os elementos dinamicamente, mantendo o HTML mais limpo e organizado
   const list = document.getElementById("iconList");
@@ -157,4 +195,5 @@ window.addEventListener("DOMContentLoaded", function () {
   gerarProjetos()
   carregarSobre()
   carregarFormacoes(formacoes)
+  carregarPortfolio(portfolio)
 })

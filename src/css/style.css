@@ -216,7 +216,7 @@ main > * {
     margin-bottom: 1vh;
 }
 
-#projeList a {
+#projeList a, #portList a {
     background-color: var(--cor-primaria);
     border-radius: 10px;
     display: flex;
@@ -228,7 +228,7 @@ main > * {
     transition: all 0.2s ease-in-out;
 }
 
-#projeList a:hover {
+#projeList a:hover, #portList a:hover {
     transform: scale(1.1);
 }
 
@@ -268,6 +268,24 @@ main > * {
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
     margin: 3vh 0;
+}
+
+/* ////////////// Portfólio ////////////// */
+.port ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    list-style: none;
+    gap: 3%;
+}
+
+.port li {
+    margin: 3vh 0;
+}
+
+.port img {
+    width: 50%;
+    border-radius: 10px;
+    margin-bottom: 1vh;
 }
 
 /* ////////////// Footer ////////////// */
