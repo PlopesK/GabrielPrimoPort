@@ -47,7 +47,6 @@ a {
 
 a:hover {
     color: #b7b2ff;
-    animation: link 2s infinite;
 }
 
 /* ////////////// Header ////////////// */
@@ -109,7 +108,7 @@ header ul {
 }
 
 /* ////////////// Conteúdo principal ////////////// */
-main > * {
+main>* {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -216,7 +215,8 @@ main > * {
     margin-bottom: 1vh;
 }
 
-#projeList a, #portList a {
+#projeList a,
+#portList a {
     background-color: var(--cor-primaria);
     border-radius: 10px;
     display: flex;
@@ -228,7 +228,8 @@ main > * {
     transition: all 0.2s ease-in-out;
 }
 
-#projeList a:hover, #portList a:hover {
+#projeList a:hover,
+#portList a:hover {
     transform: scale(1.1);
 }
 
@@ -286,6 +287,55 @@ main > * {
     width: 50%;
     border-radius: 10px;
     margin-bottom: 1vh;
+}
+
+/* ////////////// Contato ////////////// */
+#cont {
+    width: 70%;
+}
+
+.contato {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+label {
+    margin-top: 1vh;
+}
+
+input,
+textarea {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    resize: none;
+}
+
+button {
+    padding: 0.8rem;
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transform: scale(1);
+    transition: all 0.2s ease-in-out;
+    margin-top: 1vh;
+}
+
+button:hover {
+    transform: scale(1.1);
+    color: #b7b2ff;
 }
 
 /* ////////////// Footer ////////////// */

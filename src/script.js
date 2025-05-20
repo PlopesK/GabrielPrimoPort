@@ -92,7 +92,13 @@ function carregarSobre() {
         como profissional quanto como pessoa. Se quiser saber mais, fica à vontade 
         pra explorar o portfólio!</p>
 
-      </div> 
+      </div>
+      
+      <div class="modal">
+        <h3>IDIOMAS</h3>
+        <p>Português Brasileiro - Nativo</p>
+        <p>Inglês - Avançado</p>
+      </div>
     `;
   sobre.innerHTML = sobreMim;
 }
@@ -178,6 +184,40 @@ function carregarPortfolio(portfolio) {
   document.querySelector("#portList").innerHTML = gerarHTML();
 }
 
+// Menu "Contato" //
+function carregarContato() {
+  const contatoMenu = document.getElementById("contato");
+  const introducao = `
+    <div class="modal info">
+      <h3>CONTATO</h3>
+      <h4>Tem algo em mente? Me manda uma mensagem!</h4>
+      <p>Se você gostou do meu trabalho ou tem alguma ideia em mente, estou 
+      aberto a propostas, parcerias ou até um bom papo sobre tecnologia!</p>
+
+      <span class="modal" id="cont">
+        <p>Email: gpcomercial04@gmail.com</p>
+
+        <section class="contato">
+          <h3>Entre em contato!</h3>
+          <form>
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Digite sua mensagem" required></textarea>
+
+            <button type="submit">Enviar</button>
+          </form>
+        </section>
+      </span>
+    </div>
+  `;
+  contatoMenu.innerHTML = introducao
+}
+
 window.addEventListener("DOMContentLoaded", function () {
   //Quando a página carregar, gera os elementos dinamicamente, mantendo o HTML mais limpo e organizado
   const list = document.getElementById("iconList");
@@ -196,4 +236,5 @@ window.addEventListener("DOMContentLoaded", function () {
   carregarSobre()
   carregarFormacoes(formacoes)
   carregarPortfolio(portfolio)
+  carregarContato()
 })
