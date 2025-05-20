@@ -232,6 +232,44 @@ main > * {
     transform: scale(1.1);
 }
 
+/* ////////////// Formação ////////////// */
+.forma {
+    max-width: 100% !important;
+    background: none !important;
+    margin-bottom: 2vh;
+    text-align: center;
+}
+
+.forma .modal {
+    max-width: 100% !important;
+    height: 100%;
+}
+
+.secoes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    list-style: none;
+    gap: 3%;
+}
+
+.secoes img {
+    width: 30%;
+    border-radius: 10px;
+    margin-bottom: 1vh;
+}
+
+.secoes li {
+    display: flex;
+    flex-direction: column;
+    padding: 2vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    margin: 3vh 0;
+}
+
 /* ////////////// Footer ////////////// */
 footer {
     max-width: 100% !important;

@@ -1,32 +1,3 @@
-// DADOS QUE SERÃO GERADOS DINAMICAMENTE //
-const icons = [
-  { nome: "HTML", imagem: "./imgs/tecnologias/html.svg" },
-  { nome: "CSS", imagem: "./imgs/tecnologias/css.svg" },
-  { nome: "JavaScript", imagem: "./imgs/tecnologias/javascript.svg" },
-  { nome: "Node", imagem: "./imgs/tecnologias/node.svg" },
-  { nome: "Angular", imagem: "./imgs/tecnologias/angular.svg" }
-];
-const projetos = [
-  {
-    imagem: "./imgs/sonicr.png",
-    titulo: "Sonic R",
-    descricao: "Um jogo de Sonic para navegador feito com HTML, CSS e JS",
-    link: "https://plopesk.github.io/Sonic-R/"
-  },
-  {
-    imagem: "./imgs/pokedex.png",
-    titulo: "PokeDex",
-    descricao: "Um site que apresenta detalhes de Pokémons da Primeira Geração.",
-    link: "https://plopesk.github.io/Pokedex/"
-  },
-  {
-    imagem: "./imgs/anemo.png",
-    titulo: "Anemo System",
-    descricao: "Sistema de controle escolar feito para o TCC da ETEC.",
-    link: "https://anemosystem.github.io/anemo-system-website/"
-  }
-];
-
 //Evita injeção de código malicioso no site //
 function escapeHTML(str) {
   return str
@@ -126,6 +97,49 @@ function carregarSobre() {
   sobre.innerHTML = sobreMim;
 }
 
+function carregarFormacoes(formacoes) {
+  const academicos = formacoes.filter(f => f.tipo === "academico");
+  const complementares = formacoes.filter(f => f.tipo === "complementar");
+  const formaMenu = document.getElementById("formacao");
+  const introducao = `
+    <div class="modal forma">
+        <h3> FORMAÇÃO </h3>
+
+        <span class="secoes">
+          <section class="academico">
+            <h4> ACADÊMICO </h4>
+            <span class="modal">
+              <ul id="diplomas"></ul>
+            </span>
+          </section>
+
+          <section class="complementar">
+            <h4> CURSOS COMPLEMENTARES </h4>
+            <span class="modal">
+              <ul id="cursosComplementares"></ul>
+            </span>
+          </section>
+        </span>
+    </div>
+  `;
+  formaMenu.innerHTML = introducao
+
+  const gerarHTML = (lista) => {
+    return lista.map(f => `
+      <li>
+        <div class="formacaoConteudo">
+          <img src="${escapeHTML(f.imagem)}" alt="${escapeHTML(f.nome)}" loading="lazy">
+          <h3>${escapeHTML(f.titulo)}</h3>
+          <p>${escapeHTML(f.nome)}</p>
+          <p>${escapeHTML(f.data)}</p>
+        </div>
+      </li>
+    `).join("");
+  };
+  document.querySelector("#diplomas").innerHTML = gerarHTML(academicos);
+  document.querySelector("#cursosComplementares").innerHTML = gerarHTML(complementares);
+}
+
 window.addEventListener("DOMContentLoaded", function () {
   //Quando a página carregar, gera os elementos dinamicamente, mantendo o HTML mais limpo e organizado
   const list = document.getElementById("iconList");
@@ -142,4 +156,5 @@ window.addEventListener("DOMContentLoaded", function () {
   });
   gerarProjetos()
   carregarSobre()
+  carregarFormacoes(formacoes)
 })
