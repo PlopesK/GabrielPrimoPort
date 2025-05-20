@@ -1,4 +1,4 @@
-//Evita injeção de código malicioso no site //
+// Evita injeção de código malicioso no site ao escapar caracteres especiais
 function escapeHTML(str) {
   return str
     .replace(/&/g, "&amp;")
@@ -8,21 +8,22 @@ function escapeHTML(str) {
     .replace(/'/g, "&#039;");
 }
 
-//Função para controle de menus //
+// Controla a exibição dos menus com base no item selecionado //
 function controlMenus(selectedMenu) {
   const menus = document.querySelector("main");
   const links = document.querySelectorAll(".opcoes");
 
-  // Remover a classe 'ativo' de todos os links
+  // Remove a classe 'ativo' de todos os links
   links.forEach(link => link.classList.remove("ativo"));
-  // Comparamos o valor do parâmetro passado com o do link
+
+  // Adiciona a classe 'ativo' ao link clicado
   links.forEach(link => {
     if (link.getAttribute("onclick") === `controlMenus('${selectedMenu}')`) {
       link.classList.add("ativo");
     }
   });
 
-  // Alterna visibilidade dos menus
+  // Exibe apenas o menu selecionado (esconde os demais)
   for (let i = 0; i < menus.children.length; i++) {
     if (menus.children[i].tagName !== "IMG") {
       menus.children[i].style.display = (menus.children[i].id === selectedMenu) ? "flex" : "none";
@@ -30,7 +31,7 @@ function controlMenus(selectedMenu) {
   }
 }
 
-// Carrega de maneira dinâmica os projetos dentro do array "projetos" //
+// Gera o HTML dos projetos dinamicamente a partir do array "projetos" //
 function carregarProjetos(projetos) {
   return projetos.map(projeto => {
     const titulo = escapeHTML(projeto.titulo);
@@ -48,22 +49,23 @@ function carregarProjetos(projetos) {
         </div>
       </li>
     `;
-  }).join(""); //Gera um bloco de HTML que renderiza os projetos dinamicamente presentes dentro do array "projetos"
+  }).join("");
 }
 
+// Insere os projetos na lista HTML
 function gerarProjetos() {
   const ul = document.getElementById("projeList");
-  ul.innerHTML = carregarProjetos(projetos); //Atualiza a lista de projetos presente no site
+  ul.innerHTML = carregarProjetos(projetos);
 }
 
-// Menu "Sobre Mim" //
+// Carrega o conteúdo da aba "Sobre Mim" //
 function carregarSobre() {
   const sobre = document.getElementById("sobre");
   const sobreMim = `
-      <div class="modal">
-        <h3>SOBRE MIM</h3>
-
-        <p>Oi! Meu nome é Gabriel Primo, sou estudante de Ciência da Computação pela 
+    <div class="modal">
+      <h3>SOBRE MIM</h3>
+      
+      <p>Oi! Meu nome é Gabriel Primo, sou estudante de Ciência da Computação pela 
         UNINTER e também tenho formação técnica em Análise e Desenvolvimento de 
         Sistemas pela ETEC. Desde que tive meu primeiro contato com programação, 
         em 2018, venho explorando o mundo da tecnologia com muita curiosidade e 
@@ -92,45 +94,42 @@ function carregarSobre() {
         como profissional quanto como pessoa. Se quiser saber mais, fica à vontade 
         pra explorar o portfólio!</p>
 
-      </div>
-      
-      <div class="modal">
-        <h3>IDIOMAS</h3>
-        <p>Português Brasileiro - Nativo</p>
-        <p>Inglês - Avançado</p>
-      </div>
-    `;
+    </div>
+
+    <div class="modal">
+      <h3>IDIOMAS</h3>
+      <p>Português Brasileiro - Nativo</p>
+      <p>Inglês - Avançado</p>
+    </div>
+  `;
   sobre.innerHTML = sobreMim;
 }
 
-// Menu "Formação" //
+// Gera a aba de formação separando entre acadêmico e cursos complementares //
 function carregarFormacoes(formacoes) {
   const academicos = formacoes.filter(f => f.tipo === "academico");
   const complementares = formacoes.filter(f => f.tipo === "complementar");
   const formaMenu = document.getElementById("formacao");
+
+  // Estrutura inicial do HTML
   const introducao = `
     <div class="modal forma">
-        <h3> FORMAÇÃO </h3>
-
-        <span class="secoes">
-          <section class="academico">
-            <h4> ACADÊMICO </h4>
-            <span class="modal">
-              <ul id="diplomas"></ul>
-            </span>
-          </section>
-
-          <section class="complementar">
-            <h4> CURSOS COMPLEMENTARES </h4>
-            <span class="modal">
-              <ul id="cursosComplementares"></ul>
-            </span>
-          </section>
-        </span>
+      <h3> FORMAÇÃO </h3>
+      <span class="secoes">
+        <section class="academico">
+          <h4> ACADÊMICO </h4>
+          <span class="modal"><ul id="diplomas"></ul></span>
+        </section>
+        <section class="complementar">
+          <h4> CURSOS COMPLEMENTARES </h4>
+          <span class="modal"><ul id="cursosComplementares"></ul></span>
+        </section>
+      </span>
     </div>
   `;
-  formaMenu.innerHTML = introducao
+  formaMenu.innerHTML = introducao;
 
+  // Função que gera o HTML de cada formação
   const gerarHTML = (lista) => {
     return lista.map(f => `
       <li>
@@ -143,23 +142,24 @@ function carregarFormacoes(formacoes) {
       </li>
     `).join("");
   };
+
   document.querySelector("#diplomas").innerHTML = gerarHTML(academicos);
   document.querySelector("#cursosComplementares").innerHTML = gerarHTML(complementares);
 }
 
-// Menu "Portfólio" //
+// Gera os cards de projetos da aba "Portfólio" //
 function carregarPortfolio(portfolio) {
   const portMenu = document.getElementById("portfolio");
+
   const introducao = `
     <div class="modal forma">
-        <h3> PORTFÓLIO </h3>
-        <span class="modal port">
-          <ul id="portList">
-          </ul>
-        </span>
+      <h3> PORTFÓLIO </h3>
+      <span class="modal port">
+        <ul id="portList"></ul>
+      </span>
     </div>
   `;
-  portMenu.innerHTML = introducao
+  portMenu.innerHTML = introducao;
 
   const gerarHTML = () => {
     return portfolio.map(projeto => {
@@ -179,14 +179,15 @@ function carregarPortfolio(portfolio) {
         </li>
       `;
     }).join("");
-  }
+  };
 
   document.querySelector("#portList").innerHTML = gerarHTML();
 }
 
-// Menu "Contato" //
+// Gera o conteúdo da aba "Contato", com formulário e informações //
 function carregarContato() {
   const contatoMenu = document.getElementById("contato");
+
   const introducao = `
     <div class="modal info">
       <h3>CONTATO</h3>
@@ -207,7 +208,7 @@ function carregarContato() {
             <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
 
             <label for="mensagem">Mensagem</label>
-            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Digite sua mensagem" required></textarea>
+            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Digite sua mensagem" required style="resize: none;"></textarea>
 
             <button type="submit">Enviar</button>
           </form>
@@ -215,11 +216,12 @@ function carregarContato() {
       </span>
     </div>
   `;
-  contatoMenu.innerHTML = introducao
+  contatoMenu.innerHTML = introducao;
 }
 
+// Executa quando a página termina de carregar
 window.addEventListener("DOMContentLoaded", function () {
-  //Quando a página carregar, gera os elementos dinamicamente, mantendo o HTML mais limpo e organizado
+  // Gera dinamicamente os ícones da lista de tecnologias
   const list = document.getElementById("iconList");
   icons.forEach(icon => {
     const li = document.createElement("li");
@@ -230,11 +232,12 @@ window.addEventListener("DOMContentLoaded", function () {
 
     li.appendChild(img);
     list.appendChild(li);
-    // Automaticamente cria um novo <li><img></li> para cada ícone informado no array "icons"
   });
-  gerarProjetos()
-  carregarSobre()
-  carregarFormacoes(formacoes)
-  carregarPortfolio(portfolio)
-  carregarContato()
-})
+
+  // Carrega os conteúdos principais
+  gerarProjetos();
+  carregarSobre();
+  carregarFormacoes(formacoes);
+  carregarPortfolio(portfolio);
+  carregarContato();
+});
